@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Income Tax Calculator</title>
+</head>
+<body>
+  <h2>Personal Income Tax Calculator</h2>
+
+  <form id="taxForm">
+    <label for="income">Enter Annual Income:</label>
+    <input type="number" id="income" name="income" required>
+    <button type="submit">Calculate</button>
+  </form>
+
+  <p id="output"></p>
+
+  <script>
+    document.getElementById("taxForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const income = parseFloat(document.getElementById("income").value);
+
+      // Simple example tax formula (change later)
+      let tax = 0;
+      if (income <= 12000) tax = 0;
+      else if (income <= 24000) tax = (income - 12000) * 0.1;
+      else tax = 1200 + (income - 24000) * 0.2;
+
+      document.getElementById("output").innerText = `Estimated Tax: $${tax.toFixed(2)}`;
+    });
+  </script>
+</body>
+</html>
